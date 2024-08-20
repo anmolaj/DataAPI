@@ -1,13 +1,13 @@
 from pandas import DataFrame
 from typing import List
 
-class QualityChecker:
-    def __init__(self, data: DataFrame, cols: List[str]= None):
 
+class QualityChecker:
+    def __init__(self, data: DataFrame, cols: List[str] = None):
         self.data = data
         self.cols = cols
 
-    def duplicate_checker(self)-> DataFrame:
+    def duplicate_checker(self) -> DataFrame:
         """
         Check for duplicate rows in the data
         """
@@ -19,4 +19,3 @@ class QualityChecker:
         if duplicates.any():
             return duplicates
         return None
-        

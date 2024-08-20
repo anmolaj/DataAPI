@@ -19,3 +19,12 @@ class QualityChecker:
         if duplicates.any():
             return duplicates
         return None
+    
+    def missing_checker(self) -> DataFrame:
+        """
+        Check for missing values in the data
+        """
+        missing_value_df = self.data.isnull()
+        if missing_value_df.sum().any():
+            return missing_value_df
+        return None

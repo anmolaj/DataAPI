@@ -1,2 +1,2 @@
 run-tests:
-	PYTHONPATH="." pytest -v app/utils
+	PYTHONPATH="." pytest -v -s app/utils

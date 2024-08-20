@@ -1,6 +1,8 @@
 from pandas import DataFrame
 from typing import List
+from .logger import get_logger
 
+logger = get_logger(__name__)
 
 class QualityChecker:
     def __init__(self, data: DataFrame, cols: List[str] = None):
@@ -17,7 +19,9 @@ class QualityChecker:
             duplicates = self.data.duplicated()
 
         if duplicates.any():
+            logger.info('Duplicates found')
             return duplicates
+        logger.info('No duplicates found')
         return None
     
     def missing_checker(self) -> DataFrame:
@@ -26,5 +30,8 @@ class QualityChecker:
         """
         missing_value_df = self.data.isnull()
         if missing_value_df.sum().any():
+            logger.info('Missing values found')
             return missing_value_df
+        
+        logger.info('No missing values found')
         return None
